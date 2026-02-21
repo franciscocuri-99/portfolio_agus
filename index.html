@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,19 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="dist/output.css?v=2.1">
+    <style>
+        /* Smooth scroll only on non-touch / desktop to avoid iOS bounce-back */
+        @media (hover: hover) and (pointer: fine) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        /* Prevent Swiper from hijacking vertical scroll on mobile */
+        .gallery-swiper {
+            touch-action: pan-y pinch-zoom;
+        }
+    </style>
 </head>
 
 <body
@@ -172,7 +185,7 @@
                     </div>
 
                     <!-- Right Side: Constellation of Clients -->
-                    <div class="flex-1 w-full relative min-h-[500px] flex items-center justify-center reveal-on-scroll"
+                    <div class="flex-1 w-full relative min-h-[350px] md:min-h-[500px] flex items-center justify-center reveal-on-scroll"
                         style="transition-delay: 0.2s;">
                         <!-- Adding the ID here for the parallax script -->
                         <div id="constellation-container"
@@ -1080,9 +1093,12 @@
 
         /* ========================================= */
         /*  Magnetic / Repel Physics for Constellation  */
+        /*  Disabled on touch devices to prevent       */
+        /*  scroll hijacking and erratic behavior       */
         /* ========================================= */
+        const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
         const constellationContainer = document.getElementById('constellation-container');
-        if (constellationContainer) {
+        if (constellationContainer && !isTouchDevice) {
             const floatItems = constellationContainer.querySelectorAll('a.absolute');
             const initialPos = [];
 
