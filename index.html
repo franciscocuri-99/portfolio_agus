@@ -504,42 +504,7 @@
                                 </div>
                             </article>
 
-                            <!-- Instagram Reel Example -->
-                            <article
-                                class="video-card swiper-slide flex-none w-[72vw] md:w-[300px] rounded-2xl overflow-hidden relative cursor-pointer border border-white/[0.06] hover:border-brand-500/60 hover:shadow-[0_0_30px_-5px_var(--color-brand-500)] hover:-translate-y-2 transition-all duration-500">
-                                <div class="w-full aspect-[9/16] relative overflow-hidden bg-zinc-900">
-                                    <div class="ig-thumb absolute inset-0 z-10" data-ig="DBJwcMJPlSD">
-                                        <!-- Placeholder image until user uploads the actual thumbnail -->
-                                        <img src="img/reel-1.jpg"
-                                            onerror="this.src='https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&auto=format&fit=crop'"
-                                            alt="Instagram Reel"
-                                            class="thumb-img w-full h-full object-cover opacity-80 mix-blend-luminosity">
-                                        <div
-                                            class="card-overlay absolute inset-0 bg-gradient-to-tr from-purple-600/40 via-pink-500/30 to-orange-400/20 mix-blend-overlay">
-                                        </div>
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent">
-                                        </div>
-                                        <div class="absolute inset-0 flex items-center justify-center">
-                                            <div
-                                                class="play-btn w-14 h-14 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-2xl">
-                                                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="card-info absolute bottom-0 left-0 right-0 p-5">
-                                            <h3 class="text-lg font-bold text-white mb-1">Reel Viral</h3>
-                                            <p class="text-xs text-zinc-300/80 leading-relaxed">Contenido adaptado para
-                                                el algoritmo de Instagram Reels.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+
 
                             <!-- DUPLICATE SET 2 -->
                             <article
@@ -657,41 +622,7 @@
                                 </div>
                             </article>
 
-                            <!-- Instagram Reel Example (Duplicate) -->
-                            <article
-                                class="video-card swiper-slide flex-none w-[72vw] md:w-[300px] rounded-2xl overflow-hidden relative cursor-pointer border border-white/[0.06] hover:border-brand-500/60 hover:shadow-[0_0_30px_-5px_var(--color-brand-500)] hover:-translate-y-2 transition-all duration-500">
-                                <div class="w-full aspect-[9/16] relative overflow-hidden bg-zinc-900">
-                                    <div class="ig-thumb absolute inset-0 z-10" data-ig="DBJwcMJPlSD">
-                                        <img src="img/reel-1.jpg"
-                                            onerror="this.src='https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&auto=format&fit=crop'"
-                                            alt="Instagram Reel"
-                                            class="thumb-img w-full h-full object-cover opacity-80 mix-blend-luminosity">
-                                        <div
-                                            class="card-overlay absolute inset-0 bg-gradient-to-tr from-purple-600/40 via-pink-500/30 to-orange-400/20 mix-blend-overlay">
-                                        </div>
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent">
-                                        </div>
-                                        <div class="absolute inset-0 flex items-center justify-center">
-                                            <div
-                                                class="play-btn w-14 h-14 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-2xl">
-                                                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="card-info absolute bottom-0 left-0 right-0 p-5">
-                                            <h3 class="text-lg font-bold text-white mb-1">Reel Viral</h3>
-                                            <p class="text-xs text-zinc-300/80 leading-relaxed">Contenido adaptado para
-                                                el algoritmo de Instagram Reels.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+
                         </div>
                     </div>
                 </div>
@@ -903,44 +834,7 @@
                 return;
             }
 
-            // Instagram Thumbnail click logic
-            const igThumb = e.target.closest('.ig-thumb');
-            if (igThumb) {
-                if (gallerySwiper.animating && !gallerySwiper.autoplay.running) return;
 
-                const igId = igThumb.dataset.ig;
-                const container = igThumb.parentElement;
-
-                igThumb.style.display = 'none';
-
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://www.instagram.com/reel/${igId}/embed/`;
-                iframe.className = 'absolute top-0 left-0 w-full h-full z-20 bg-black';
-                iframe.setAttribute('frameborder', '0');
-                iframe.setAttribute('scrolling', 'no');
-                iframe.setAttribute('allowtransparency', 'true');
-
-                // Add a close button for the IG embed
-                const closeBtn = document.createElement('button');
-                closeBtn.className = 'absolute top-4 right-4 z-30 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/90';
-                closeBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
-
-                const wrapper = document.createElement('div');
-                wrapper.className = 'absolute inset-0 z-20';
-                wrapper.appendChild(iframe);
-                wrapper.appendChild(closeBtn);
-
-                closeBtn.addEventListener('click', (evt) => {
-                    evt.stopPropagation();
-                    wrapper.remove();
-                    igThumb.style.display = '';
-                    gallerySwiper.autoplay.start();
-                });
-
-                container.appendChild(wrapper);
-                gallerySwiper.autoplay.stop();
-                return;
-            }
 
             // YouTube Thumbnail click logic
             const thumb = e.target.closest('.yt-thumb');
