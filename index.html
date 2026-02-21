@@ -745,109 +745,108 @@
                     </p>
                 </div>
 
-                <!-- 3D Coverflow Carousel -->
+                <!-- Continuous 3D Cylinder Carousel -->
                 <style>
-                    .resultados-swiper {
+                    .carousel-3d-viewport {
+                        perspective: 1200px;
+                        overflow: visible;
                         padding: 40px 0 60px;
-                        overflow: hidden;
+                        cursor: grab;
+                        -webkit-user-select: none;
+                        user-select: none;
                     }
 
-                    .resultados-swiper .swiper-slide {
-                        width: 260px;
-                        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-                        filter: blur(4px) brightness(0.5);
-                        opacity: 0.5;
-                        transform: scale(0.85);
+                    .carousel-3d-viewport:active {
+                        cursor: grabbing;
+                    }
+
+                    .carousel-3d-scene {
+                        width: 240px;
+                        height: 426px;
+                        /* 240 * 16/9 */
+                        position: relative;
+                        margin: 0 auto;
+                        transform-style: preserve-3d;
                     }
 
                     @media (min-width: 768px) {
-                        .resultados-swiper .swiper-slide {
-                            width: 300px;
+                        .carousel-3d-scene {
+                            width: 280px;
+                            height: 498px;
+                            /* 280 * 16/9 */
                         }
                     }
 
-                    .resultados-swiper .swiper-slide-active {
-                        filter: blur(0) brightness(1);
-                        opacity: 1;
-                        transform: scale(1);
+                    .carousel-3d-item {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        backface-visibility: hidden;
+                        transition: filter 0.4s ease, opacity 0.4s ease;
                     }
 
-                    .resultados-swiper .swiper-slide-active .resultado-card {
+                    .carousel-3d-item a {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 1rem;
+                        overflow: hidden;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        background: #000;
+                        transition: border-color 0.4s ease, box-shadow 0.4s ease;
+                    }
+
+                    .carousel-3d-item img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        background: #000;
+                    }
+
+                    .carousel-3d-item.is-front a {
                         border-color: rgba(34, 197, 94, 0.5);
                         box-shadow:
-                            0 0 40px -10px rgba(34, 197, 94, 0.4),
+                            0 0 50px -10px rgba(34, 197, 94, 0.45),
                             0 25px 50px -12px rgba(0, 0, 0, 0.6);
-                    }
-
-                    .resultados-swiper .swiper-slide-prev,
-                    .resultados-swiper .swiper-slide-next {
-                        filter: blur(2px) brightness(0.7);
-                        opacity: 0.7;
-                        transform: scale(0.9);
-                    }
-
-                    /* Swiper's built-in coverflow shadows */
-                    .resultados-swiper .swiper-slide-shadow-left,
-                    .resultados-swiper .swiper-slide-shadow-right {
-                        background: linear-gradient(to left, rgba(0, 0, 0, 0.4), transparent);
-                        border-radius: 1rem;
                     }
                 </style>
 
-                <div class="swiper resultados-swiper w-full max-w-6xl mx-auto reveal-on-scroll">
-                    <div class="swiper-wrapper">
+                <div class="carousel-3d-viewport reveal-on-scroll" id="carousel3d">
+                    <div class="carousel-3d-scene" id="carousel3dScene">
 
-                        <!-- Result 1 -->
-                        <div class="swiper-slide">
-                            <a href="https://www.instagram.com/reel/C6wh80eiQjE/" target="_blank"
-                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
-                                <img src="img/galeria_exito/coral 1.PNG" alt="Resultado de Éxito Coral"
-                                    class="w-full h-full object-cover">
+                        <div class="carousel-3d-item" data-href="https://www.instagram.com/reel/C6wh80eiQjE/">
+                            <a href="https://www.instagram.com/reel/C6wh80eiQjE/" target="_blank">
+                                <img src="img/galeria_exito/coral 1.PNG" alt="Resultado de Éxito Coral">
                             </a>
                         </div>
 
-                        <!-- Result 2 -->
-                        <div class="swiper-slide">
-                            <a href="https://www.instagram.com/reel/DBJwcMJPlSD/" target="_blank"
-                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
-                                <img src="img/galeria_exito/diego 1.PNG" alt="Resultado de Éxito Diego"
-                                    class="w-full h-full object-cover">
+                        <div class="carousel-3d-item" data-href="https://www.instagram.com/reel/DBJwcMJPlSD/">
+                            <a href="https://www.instagram.com/reel/DBJwcMJPlSD/" target="_blank">
+                                <img src="img/galeria_exito/diego 1.PNG" alt="Resultado de Éxito Diego">
                             </a>
                         </div>
 
-                        <!-- Result 3 -->
-                        <div class="swiper-slide">
-                            <a href="https://www.instagram.com/reel/DDmeII7CVgm/" target="_blank"
-                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
-                                <img src="img/galeria_exito/diego 2.PNG" alt="Segundo Resultado Diego"
-                                    class="w-full h-full object-cover">
+                        <div class="carousel-3d-item" data-href="https://www.instagram.com/reel/DDmeII7CVgm/">
+                            <a href="https://www.instagram.com/reel/DDmeII7CVgm/" target="_blank">
+                                <img src="img/galeria_exito/diego 2.PNG" alt="Segundo Resultado Diego">
                             </a>
                         </div>
 
-                        <!-- Result 4 -->
-                        <div class="swiper-slide">
-                            <a href="https://www.instagram.com/reel/DObt1RoDg9c/" target="_blank"
-                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
-                                <img src="img/galeria_exito/joha 1.PNG" alt="Resultado de Éxito Joha"
-                                    class="w-full h-full object-cover">
+                        <div class="carousel-3d-item" data-href="https://www.instagram.com/reel/DObt1RoDg9c/">
+                            <a href="https://www.instagram.com/reel/DObt1RoDg9c/" target="_blank">
+                                <img src="img/galeria_exito/joha 1.PNG" alt="Resultado de Éxito Joha">
                             </a>
                         </div>
 
-                        <!-- Result 5 -->
-                        <div class="swiper-slide">
-                            <a href="https://www.instagram.com/reel/DR7l_0sjpQU/" target="_blank"
-                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
-                                <img src="img/galeria_exito/joha 2.PNG" alt="Segundo Resultado Joha"
-                                    class="w-full h-full object-cover">
+                        <div class="carousel-3d-item" data-href="https://www.instagram.com/reel/DR7l_0sjpQU/">
+                            <a href="https://www.instagram.com/reel/DR7l_0sjpQU/" target="_blank">
+                                <img src="img/galeria_exito/joha 2.PNG" alt="Segundo Resultado Joha">
                             </a>
                         </div>
 
-                        <!-- Result 6 -->
-                        <div class="swiper-slide">
-                            <a href="https://www.instagram.com/reel/DRAWL4BgkWa/" target="_blank"
-                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
-                                <img src="img/galeria_exito/vieja 6k.PNG" alt="Resultado de Éxito Histórico"
-                                    class="w-full h-full object-cover">
+                        <div class="carousel-3d-item" data-href="https://www.instagram.com/reel/DRAWL4BgkWa/">
+                            <a href="https://www.instagram.com/reel/DRAWL4BgkWa/" target="_blank">
+                                <img src="img/galeria_exito/vieja 6k.PNG" alt="Resultado de Éxito Histórico">
                             </a>
                         </div>
 
@@ -965,28 +964,155 @@
         });
 
         /* ========================================= */
-        /*  Resultados Reales 3D Coverflow Carousel  */
+        /*  Resultados Reales – Continuous 3D Carousel */
         /* ========================================= */
-        const resultadosSwiper = new Swiper('.resultados-swiper', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            loop: true,
-            speed: 1000,
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 80,
-                depth: 200,
-                modifier: 1,
-                slideShadows: true,
-            },
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-        });
+        (function () {
+            const scene = document.getElementById('carousel3dScene');
+            const viewport = document.getElementById('carousel3d');
+            const items = scene.querySelectorAll('.carousel-3d-item');
+            const count = items.length;
+            const angleStep = 360 / count; // 60° per item
+
+            // Radius calculation: based on item width + spacing
+            // For 6 items, radius ≈ itemWidth / (2 * tan(π/6)) ≈ itemWidth * 0.866
+            function getRadius() {
+                const w = scene.offsetWidth;
+                return w * 1.4; // generous radius for nice spacing
+            }
+
+            let currentAngle = 0;
+            const autoSpeed = 0.12; // degrees per frame (~7.2°/s → full rotation in 50s)
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartAngle = 0;
+            let velocity = 0;
+            let lastDragX = 0;
+            let lastDragTime = 0;
+            let animId = null;
+
+            function positionItems() {
+                const radius = getRadius();
+                let frontItem = null;
+                let bestZ = -Infinity;
+
+                items.forEach((item, i) => {
+                    const itemAngle = currentAngle + i * angleStep;
+                    const rad = (itemAngle * Math.PI) / 180;
+
+                    const x = Math.sin(rad) * radius;
+                    const z = Math.cos(rad) * radius;
+
+                    // Normalize z to 0..1 (0 = back, 1 = front)
+                    const zNorm = (z + radius) / (2 * radius);
+
+                    const scale = 0.55 + zNorm * 0.45; // 0.55 → 1.0
+                    const blur = (1 - zNorm) * 5; // 0 → 5px
+                    const brightness = 0.4 + zNorm * 0.6; // 0.4 → 1.0
+                    const opacity = 0.3 + zNorm * 0.7; // 0.3 → 1.0
+
+                    item.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+                    item.style.filter = `blur(${blur.toFixed(1)}px) brightness(${brightness.toFixed(2)})`;
+                    item.style.opacity = opacity.toFixed(2);
+                    item.style.zIndex = Math.round(zNorm * 100);
+
+                    if (z > bestZ) {
+                        bestZ = z;
+                        frontItem = item;
+                    }
+
+                    item.classList.remove('is-front');
+                });
+
+                if (frontItem) frontItem.classList.add('is-front');
+            }
+
+            function animate() {
+                if (!isDragging) {
+                    // Apply momentum or auto-speed
+                    if (Math.abs(velocity) > 0.01) {
+                        currentAngle += velocity;
+                        velocity *= 0.96; // friction
+                    } else {
+                        velocity = 0;
+                        currentAngle += autoSpeed;
+                    }
+                }
+                positionItems();
+                animId = requestAnimationFrame(animate);
+            }
+
+            // --- Drag / Touch handling ---
+            function onPointerDown(e) {
+                // Don't hijack link clicks – only start drag on primary button or touch
+                if (e.button && e.button !== 0) return;
+                isDragging = true;
+                velocity = 0;
+                dragStartX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+                dragStartAngle = currentAngle;
+                lastDragX = dragStartX;
+                lastDragTime = Date.now();
+                viewport.style.cursor = 'grabbing';
+            }
+
+            function onPointerMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+                const dx = clientX - dragStartX;
+                // Sensitivity: map pixel movement to degrees
+                currentAngle = dragStartAngle + dx * 0.3;
+
+                // Track velocity for momentum
+                const now = Date.now();
+                const dt = now - lastDragTime;
+                if (dt > 0) {
+                    velocity = ((clientX - lastDragX) * 0.3) / Math.max(dt / 16, 1);
+                }
+                lastDragX = clientX;
+                lastDragTime = now;
+            }
+
+            function onPointerUp(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                viewport.style.cursor = 'grab';
+
+                // If barely moved, don't override link click
+                const clientX = e.clientX || (e.changedTouches && e.changedTouches[0].clientX) || 0;
+                const totalDrag = Math.abs(clientX - dragStartX);
+                if (totalDrag < 5) {
+                    velocity = 0; // restore auto-speed quickly
+                }
+                // Clamp momentum
+                velocity = Math.max(-3, Math.min(3, velocity));
+            }
+
+            // Prevent link clicks when dragging
+            viewport.addEventListener('click', function (e) {
+                const clientX = e.clientX || 0;
+                if (Math.abs(clientX - dragStartX) > 8) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+
+            // Mouse events
+            viewport.addEventListener('mousedown', onPointerDown);
+            window.addEventListener('mousemove', onPointerMove);
+            window.addEventListener('mouseup', onPointerUp);
+
+            // Touch events
+            viewport.addEventListener('touchstart', onPointerDown, { passive: true });
+            viewport.addEventListener('touchmove', onPointerMove, { passive: false });
+            viewport.addEventListener('touchend', onPointerUp);
+
+            // Recalculate on resize
+            window.addEventListener('resize', positionItems);
+
+            // Start!
+            positionItems();
+            animate();
+        })();
 
         /* ========================================= */
         /*  Global State                             */
