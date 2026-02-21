@@ -745,55 +745,113 @@
                     </p>
                 </div>
 
-                <!-- Gallery Grid -->
-                <!-- Set identical aspect ratio with exact fitting for all 6 reels -->
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 max-w-5xl mx-auto justify-items-center">
+                <!-- 3D Coverflow Carousel -->
+                <style>
+                    .resultados-swiper {
+                        padding: 40px 0 60px;
+                        overflow: hidden;
+                    }
 
-                    <!-- Result 1 -->
-                    <a href="https://www.instagram.com/reel/C6wh80eiQjE/" target="_blank"
-                        class="block w-full max-w-[320px] aspect-[9/16] group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-brand-500/50 transition-all duration-500 cursor-pointer reveal-on-scroll hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)] hover:-translate-y-2">
-                        <img src="img/galeria_exito/coral 1.PNG" alt="Resultado de Éxito Coral"
-                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-                    </a>
+                    .resultados-swiper .swiper-slide {
+                        width: 260px;
+                        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                        filter: blur(4px) brightness(0.5);
+                        opacity: 0.5;
+                        transform: scale(0.85);
+                    }
 
-                    <!-- Result 2 -->
-                    <a href="https://www.instagram.com/reel/DBJwcMJPlSD/" target="_blank"
-                        class="block w-full max-w-[320px] aspect-[9/16] group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-brand-500/50 transition-all duration-500 cursor-pointer reveal-on-scroll hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)] hover:-translate-y-2"
-                        style="transition-delay: 0.1s;">
-                        <img src="img/galeria_exito/diego 1.PNG" alt="Resultado de Éxito Diego"
-                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-                    </a>
+                    @media (min-width: 768px) {
+                        .resultados-swiper .swiper-slide {
+                            width: 300px;
+                        }
+                    }
 
-                    <!-- Result 3 -->
-                    <a href="https://www.instagram.com/reel/DDmeII7CVgm/" target="_blank"
-                        class="block w-full max-w-[320px] aspect-[9/16] group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-brand-500/50 transition-all duration-500 cursor-pointer reveal-on-scroll hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)] hover:-translate-y-2"
-                        style="transition-delay: 0.2s;">
-                        <img src="img/galeria_exito/diego 2.PNG" alt="Segundo Resultado Diego"
-                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-                    </a>
+                    .resultados-swiper .swiper-slide-active {
+                        filter: blur(0) brightness(1);
+                        opacity: 1;
+                        transform: scale(1);
+                    }
 
-                    <!-- Result 4 -->
-                    <a href="https://www.instagram.com/reel/DObt1RoDg9c/" target="_blank"
-                        class="block w-full max-w-[320px] aspect-[9/16] group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-brand-500/50 transition-all duration-500 cursor-pointer reveal-on-scroll hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)] hover:-translate-y-2">
-                        <img src="img/galeria_exito/joha 1.PNG" alt="Resultado de Éxito Joha"
-                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-                    </a>
+                    .resultados-swiper .swiper-slide-active .resultado-card {
+                        border-color: rgba(34, 197, 94, 0.5);
+                        box-shadow:
+                            0 0 40px -10px rgba(34, 197, 94, 0.4),
+                            0 25px 50px -12px rgba(0, 0, 0, 0.6);
+                    }
 
-                    <!-- Result 5 -->
-                    <a href="https://www.instagram.com/reel/DR7l_0sjpQU/" target="_blank"
-                        class="block w-full max-w-[320px] aspect-[9/16] group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-brand-500/50 transition-all duration-500 cursor-pointer reveal-on-scroll hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)] hover:-translate-y-2"
-                        style="transition-delay: 0.1s;">
-                        <img src="img/galeria_exito/joha 2.PNG" alt="Segundo Resultado Joha"
-                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-                    </a>
+                    .resultados-swiper .swiper-slide-prev,
+                    .resultados-swiper .swiper-slide-next {
+                        filter: blur(2px) brightness(0.7);
+                        opacity: 0.7;
+                        transform: scale(0.9);
+                    }
 
-                    <!-- Result 6 -->
-                    <a href="https://www.instagram.com/reel/DRAWL4BgkWa/" target="_blank"
-                        class="block w-full max-w-[320px] aspect-[9/16] group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-brand-500/50 transition-all duration-500 cursor-pointer reveal-on-scroll hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)] hover:-translate-y-2"
-                        style="transition-delay: 0.2s;">
-                        <img src="img/galeria_exito/vieja 6k.PNG" alt="Resultado de Éxito Histórico"
-                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-                    </a>
+                    /* Swiper's built-in coverflow shadows */
+                    .resultados-swiper .swiper-slide-shadow-left,
+                    .resultados-swiper .swiper-slide-shadow-right {
+                        background: linear-gradient(to left, rgba(0, 0, 0, 0.4), transparent);
+                        border-radius: 1rem;
+                    }
+                </style>
+
+                <div class="swiper resultados-swiper w-full max-w-6xl mx-auto reveal-on-scroll">
+                    <div class="swiper-wrapper">
+
+                        <!-- Result 1 -->
+                        <div class="swiper-slide">
+                            <a href="https://www.instagram.com/reel/C6wh80eiQjE/" target="_blank"
+                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
+                                <img src="img/galeria_exito/coral 1.PNG" alt="Resultado de Éxito Coral"
+                                    class="w-full h-full object-cover">
+                            </a>
+                        </div>
+
+                        <!-- Result 2 -->
+                        <div class="swiper-slide">
+                            <a href="https://www.instagram.com/reel/DBJwcMJPlSD/" target="_blank"
+                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
+                                <img src="img/galeria_exito/diego 1.PNG" alt="Resultado de Éxito Diego"
+                                    class="w-full h-full object-cover">
+                            </a>
+                        </div>
+
+                        <!-- Result 3 -->
+                        <div class="swiper-slide">
+                            <a href="https://www.instagram.com/reel/DDmeII7CVgm/" target="_blank"
+                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
+                                <img src="img/galeria_exito/diego 2.PNG" alt="Segundo Resultado Diego"
+                                    class="w-full h-full object-cover">
+                            </a>
+                        </div>
+
+                        <!-- Result 4 -->
+                        <div class="swiper-slide">
+                            <a href="https://www.instagram.com/reel/DObt1RoDg9c/" target="_blank"
+                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
+                                <img src="img/galeria_exito/joha 1.PNG" alt="Resultado de Éxito Joha"
+                                    class="w-full h-full object-cover">
+                            </a>
+                        </div>
+
+                        <!-- Result 5 -->
+                        <div class="swiper-slide">
+                            <a href="https://www.instagram.com/reel/DR7l_0sjpQU/" target="_blank"
+                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
+                                <img src="img/galeria_exito/joha 2.PNG" alt="Segundo Resultado Joha"
+                                    class="w-full h-full object-cover">
+                            </a>
+                        </div>
+
+                        <!-- Result 6 -->
+                        <div class="swiper-slide">
+                            <a href="https://www.instagram.com/reel/DRAWL4BgkWa/" target="_blank"
+                                class="resultado-card block w-full aspect-[9/16] relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-500 cursor-pointer">
+                                <img src="img/galeria_exito/vieja 6k.PNG" alt="Resultado de Éxito Histórico"
+                                    class="w-full h-full object-cover">
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="mt-16 text-center reveal-on-scroll">
@@ -904,6 +962,30 @@
                 nextEl: '#gallery-next',
                 prevEl: '#gallery-prev',
             }
+        });
+
+        /* ========================================= */
+        /*  Resultados Reales 3D Coverflow Carousel  */
+        /* ========================================= */
+        const resultadosSwiper = new Swiper('.resultados-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            speed: 1000,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 80,
+                depth: 200,
+                modifier: 1,
+                slideShadows: true,
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
         });
 
         /* ========================================= */
