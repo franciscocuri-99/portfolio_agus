@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,14 @@
         /* Prevent Swiper from hijacking vertical scroll on mobile */
         .gallery-swiper {
             touch-action: pan-y pinch-zoom;
+        }
+
+        /* Prevent horizontal scroll leak */
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
     </style>
 </head>
@@ -55,7 +63,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <section id="inicio" class="relative min-h-[100svh] flex items-center justify-center pt-20 overflow-hidden">
             <!-- Background Elements -->
             <div class="absolute inset-0 hero-glow pointer-events-none"></div>
             <!-- Premium UI: Dynamic Hero Animated Orb -->
