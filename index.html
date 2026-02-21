@@ -815,6 +815,8 @@
                         border: 1px solid rgba(255, 255, 255, 0.1);
                         background: #0a0a0a;
                         transition: border-color 0.4s ease, box-shadow 0.4s ease;
+                        -webkit-user-drag: none;
+                        user-drag: none;
                     }
 
                     .carousel-3d-item img {
@@ -822,6 +824,9 @@
                         height: 100%;
                         object-fit: contain;
                         background: #000;
+                        pointer-events: none;
+                        -webkit-user-drag: none;
+                        user-drag: none;
                     }
 
                     .carousel-3d-item.is-front a {
@@ -1066,6 +1071,7 @@
             function onPointerDown(e) {
                 // Don't hijack link clicks – only start drag on primary button or touch
                 if (e.button && e.button !== 0) return;
+                e.preventDefault(); // prevent native browser drag on links/images
                 isDragging = true;
                 velocity = 0;
                 dragStartX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
