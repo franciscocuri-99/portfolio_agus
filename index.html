@@ -195,6 +195,7 @@
                                 batallas de rap que superó los <strong class="text-white">200.000 suscriptores</strong>,
                                 un entorno de alto volumen que exigía velocidad, precisión y coherencia visual.
                             </p>
+
                             <p class="text-lg md:text-xl text-zinc-400 leading-relaxed">
                                 Luego trabajé como editor con clientes de distintos nichos, incluyendo <strong>marcas
                                     personales, agencias de marketing y profesionales de la salud</strong>, realizando
@@ -218,8 +219,8 @@
                         </div>
                     </div>
 
-                    <!-- Right Side: Constellation of Clients -->
-                    <div class="flex-1 w-full relative min-h-[350px] md:min-h-[500px] flex items-center justify-center reveal-on-scroll"
+                    <!-- Right Side: Constellation of Clients + Fan -->
+                    <div class="flex-1 w-full relative min-h-[350px] md:min-h-[500px] flex flex-col items-center justify-center reveal-on-scroll"
                         style="transition-delay: 0.2s;">
                         <!-- Adding the ID here for the parallax script -->
                         <div id="constellation-container"
@@ -232,7 +233,7 @@
 
                             <!-- Client 1: Diego Vetencourt -->
                             <a href="https://instagram.com/diego.vetencourt" target="_blank"
-                                class="absolute top-[5%] left-[45%] flex flex-col items-center group animate-float hover:scale-110 transition-transform z-10"
+                                class="absolute top-[12%] left-[35%] flex flex-col items-center group animate-float hover:scale-110 transition-transform z-10"
                                 style="animation-duration: 6s; animation-delay: 0s;">
                                 <div
                                     class="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border border-white/10 group-hover:border-brand-500 transition-all duration-300 shadow-2xl mb-3 group-hover:shadow-[0_0_25px_8px_rgba(34,197,94,0.5)]">
@@ -245,7 +246,7 @@
 
                             <!-- Client 2: Mateo Folador -->
                             <a href="https://instagram.com/mateo_folador" target="_blank"
-                                class="absolute top-[25%] right-[5%] flex flex-col items-center group animate-float hover:scale-110 transition-transform z-20"
+                                class="absolute top-[30%] right-[15%] flex flex-col items-center group animate-float hover:scale-110 transition-transform z-20"
                                 style="animation-duration: 7s; animation-delay: 1.2s;">
                                 <div
                                     class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-white/10 group-hover:border-brand-500 transition-all duration-300 shadow-2xl mb-3 group-hover:shadow-[0_0_25px_8px_rgba(34,197,94,0.5)]">
@@ -294,9 +295,195 @@
                                     class="text-zinc-300 font-medium text-xs md:text-sm tracking-wide bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm border border-white/5 opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 whitespace-nowrap">@johannajimenez15_</span>
                             </a>
                         </div>
+
+                        <!-- Esquina Rapper Fan (below constellation) -->
+                        <div class="esquina-fan-wrapper">
+                            <div class="esquina-fan">
+                                <img src="img/esquina_rapper/vistas.png" alt="Videos más vistos de Esquina Rapper"
+                                    class="esquina-card esquina-card--back-left" data-lightbox>
+                                <img src="img/esquina_rapper/populares.png" alt="Videos populares de Esquina Rapper"
+                                    class="esquina-card esquina-card--back-right" data-lightbox>
+                                <img src="img/esquina_rapper/portada.png" alt="Canal Esquina Rapper — 203K suscriptores"
+                                    class="esquina-card esquina-card--front" data-lightbox>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+            <!-- Lightbox Modal -->
+            <div id="esquinaLightbox" class="esquina-lightbox" aria-hidden="true">
+                <button class="esquina-lightbox__close" aria-label="Cerrar">&times;</button>
+                <button class="esquina-lightbox__arrow esquina-lightbox__arrow--left"
+                    aria-label="Anterior">&#8249;</button>
+                <img class="esquina-lightbox__img" src="" alt="">
+                <button class="esquina-lightbox__arrow esquina-lightbox__arrow--right"
+                    aria-label="Siguiente">&#8250;</button>
+            </div>
+
+            <style>
+                .esquina-fan-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    padding: 20px 0 0;
+                }
+
+                .esquina-fan {
+                    position: relative;
+                    width: 340px;
+                    height: 200px;
+                    perspective: 800px;
+                }
+
+                @media (min-width: 768px) {
+                    .esquina-fan {
+                        width: 440px;
+                        height: 250px;
+                    }
+                }
+
+                .esquina-card {
+                    position: absolute;
+                    width: 85%;
+                    border-radius: 0.75rem;
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.5s ease, opacity 0.5s ease;
+                    left: 50%;
+                    top: 50%;
+                    cursor: pointer;
+                }
+
+                .esquina-card--back-left {
+                    transform: translate(-50%, -50%) rotate(-12deg) scale(0.88);
+                    z-index: 1;
+                    opacity: 0.7;
+                }
+
+                .esquina-card--back-right {
+                    transform: translate(-50%, -50%) rotate(8deg) scale(0.92);
+                    z-index: 2;
+                    opacity: 0.8;
+                }
+
+                .esquina-card--front {
+                    transform: translate(-50%, -50%) rotate(-2deg) scale(1);
+                    z-index: 3;
+                    box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15),
+                        0 8px 30px rgba(0, 0, 0, 0.5);
+                    border-color: rgba(34, 197, 94, 0.2);
+                }
+
+                .esquina-fan:hover .esquina-card--back-left {
+                    transform: translate(-65%, -55%) rotate(-16deg) scale(0.88);
+                    opacity: 0.9;
+                }
+
+                .esquina-fan:hover .esquina-card--back-right {
+                    transform: translate(-35%, -45%) rotate(14deg) scale(0.92);
+                    opacity: 0.95;
+                }
+
+                .esquina-fan:hover .esquina-card--front {
+                    transform: translate(-50%, -50%) rotate(0deg) scale(1.02);
+                    box-shadow: 0 16px 50px rgba(34, 197, 94, 0.25),
+                        0 12px 40px rgba(0, 0, 0, 0.5);
+                }
+
+                /* Lightbox */
+                .esquina-lightbox {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 9999;
+                    background: rgba(0, 0, 0, 0.88);
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 2rem;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.35s ease;
+                    cursor: pointer;
+                }
+
+                .esquina-lightbox.is-open {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+
+                .esquina-lightbox__img {
+                    max-width: 92vw;
+                    max-height: 88vh;
+                    border-radius: 1rem;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    transform: scale(0.9);
+                    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                    cursor: default;
+                }
+
+                .esquina-lightbox.is-open .esquina-lightbox__img {
+                    transform: scale(1);
+                }
+
+                .esquina-lightbox__close {
+                    position: absolute;
+                    top: 1.5rem;
+                    right: 2rem;
+                    font-size: 2.5rem;
+                    color: rgba(255, 255, 255, 0.7);
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    z-index: 10;
+                    line-height: 1;
+                    transition: color 0.2s, transform 0.2s;
+                }
+
+                .esquina-lightbox__close:hover {
+                    color: #fff;
+                    transform: scale(1.15);
+                }
+
+                .esquina-lightbox__arrow {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 3rem;
+                    color: rgba(255, 255, 255, 0.6);
+                    background: rgba(255, 255, 255, 0.08);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    width: 56px;
+                    height: 56px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    z-index: 10;
+                    transition: color 0.2s, background 0.2s, transform 0.2s;
+                    line-height: 1;
+                    padding-bottom: 4px;
+                }
+
+                .esquina-lightbox__arrow:hover {
+                    color: #fff;
+                    background: rgba(255, 255, 255, 0.15);
+                    transform: translateY(-50%) scale(1.1);
+                }
+
+                .esquina-lightbox__arrow--left {
+                    left: 1.5rem;
+                }
+
+                .esquina-lightbox__arrow--right {
+                    right: 1.5rem;
+                }
+            </style>
         </section>
 
         <!-- Resultados Section -->
@@ -1349,6 +1536,70 @@
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             revealElements.forEach(el => observer.observe(el));
         });
+
+        /* ========================================= */
+        /*  Esquina Rapper Lightbox                  */
+        /* ========================================= */
+        (function () {
+            const lightbox = document.getElementById('esquinaLightbox');
+            if (!lightbox) return;
+            const lbImg = lightbox.querySelector('.esquina-lightbox__img');
+            const lbClose = lightbox.querySelector('.esquina-lightbox__close');
+            const arrowLeft = lightbox.querySelector('.esquina-lightbox__arrow--left');
+            const arrowRight = lightbox.querySelector('.esquina-lightbox__arrow--right');
+
+            // Collect all lightbox-enabled cards
+            const cards = Array.from(document.querySelectorAll('.esquina-card[data-lightbox]'));
+            let currentIndex = 0;
+
+            function showImage(index) {
+                currentIndex = ((index % cards.length) + cards.length) % cards.length;
+                lbImg.src = cards[currentIndex].src;
+                lbImg.alt = cards[currentIndex].alt;
+            }
+
+            // Open lightbox on card click
+            cards.forEach((card, i) => {
+                card.addEventListener('click', function () {
+                    showImage(i);
+                    lightbox.classList.add('is-open');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            // Close on X button
+            lbClose.addEventListener('click', closeLightbox);
+
+            // Arrow navigation
+            arrowLeft.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex - 1);
+            });
+            arrowRight.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex + 1);
+            });
+
+            // Close on backdrop click (not image or arrows)
+            lightbox.addEventListener('click', function (e) {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            // Keyboard: Escape closes, arrows navigate
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('is-open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            });
+        })();
 
 
     </script>
